@@ -1,0 +1,28 @@
+# Build artifacts
+build/
+dist/
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# Large data files
+Fallout London VR 0.99 Data Files/
+Backup/
+
+# Old/test files
+old versions/
+*.old
+
+# Spec files we don't need
+Fallout London VR_Installer.spec
+FalloutLondonVR_Installer_Test.spec
+installer.spec
+
+# Test/copy files
+installer - Copy.py
+installer - All mods ext.py
+installer VS.py
+import tkinter as tk.py
