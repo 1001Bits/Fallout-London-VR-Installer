@@ -1535,7 +1535,7 @@ class FalloutLondonVRInstaller:
         tk.Label(content_frame, text="Updating Fallout: London VR", font=self.title_font,
                 bg=bg_color if not self.bg_image else '#1e1e1e', fg=fg_color).pack(pady=self.get_scaled_value(5))
         
-        self.message_label = tk.Label(content_frame, text="Preparing update...", font=self.regular_font,
+        self.message_label = tk.Label(content_frame, text="Preparing update.", font=self.regular_font,
                                       bg=bg_color if not self.bg_image else '#1e1e1e', fg=fg_color,
                                       wraplength=460, justify="center")
         self.message_label.pack(pady=self.get_scaled_value(2))
@@ -1750,7 +1750,7 @@ class FalloutLondonVRInstaller:
             else:
                 logging.warning("Could not read F4VR path from ModOrganizer.ini - CAS and xSE Preloader may be skipped")
             
-            self.root.after(0, lambda: self.message_label.config(text="Backing up .ini files...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+            self.root.after(0, lambda: self.message_label.config(text="Backing up .ini files.", fg="#ffffff") if self.message_label.winfo_exists() else None)
             
             # Step 1: Backup .ini files from Default profile
             profiles_dir = os.path.join(install_path, "profiles")
@@ -1767,7 +1767,7 @@ class FalloutLondonVRInstaller:
                         logging.info(f"Backed up {ini_file} to {backup_name}")
             
             # Step 1.5: Remove deprecated files and mods BEFORE copying new assets
-            self.root.after(0, lambda: self.message_label.config(text="Removing deprecated mods...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+            self.root.after(0, lambda: self.message_label.config(text="Removing deprecated mods.", fg="#ffffff") if self.message_label.winfo_exists() else None)
             
             mods_dir = os.path.join(install_path, "mods")
             logging.info(f"Checking mods directory for cleanup: {mods_dir}")
@@ -1788,7 +1788,7 @@ class FalloutLondonVRInstaller:
                     dll_files = [f for f in os.listdir(f4se_plugins_path) if f.lower().endswith('.dll')]
                     if dll_files:
                         logging.info(f"Detected old mod organization (pre-0.96): Found DLLs in Plugins folder: {dll_files}")
-                        self.root.after(0, lambda: self.message_label.config(text="Cleaning up old mod organization...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+                        self.root.after(0, lambda: self.message_label.config(text="Cleaning up old mod organization.", fg="#ffffff") if self.message_label.winfo_exists() else None)
                         
                         while True:  # Retry loop
                             try:
@@ -1808,7 +1808,7 @@ class FalloutLondonVRInstaller:
                     logging.warning(f"Error checking for old mod organization: {e}")
             
             # Remove any old FRIK directories and install new FRIK
-            self.root.after(0, lambda: self.message_label.config(text="Updating FRIK...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+            self.root.after(0, lambda: self.message_label.config(text="Updating FRIK.", fg="#ffffff") if self.message_label.winfo_exists() else None)
             
             # Find and remove any existing FRIK directories (FRIK.v74, FRIK.v75, FRIK.v76, etc.)
             frik_dirs_removed = False
@@ -1819,7 +1819,7 @@ class FalloutLondonVRInstaller:
                     if os.path.isdir(item_path) and item.upper().startswith("FRIK"):
                         while True:  # Retry loop for directory removal
                             try:
-                                self.root.after(0, lambda name=item: self.message_label.config(text=f"Removing old FRIK: {name}...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+                                self.root.after(0, lambda name=item: self.message_label.config(text=f"Removing old FRIK: {name}.", fg="#ffffff") if self.message_label.winfo_exists() else None)
                                 logging.info(f"Found old FRIK directory at {item_path}, removing...")
                                 shutil.rmtree(item_path)
                                 logging.info(f"Old FRIK directory '{item}' removed successfully")
@@ -1841,7 +1841,7 @@ class FalloutLondonVRInstaller:
                 logging.warning(f"Error scanning for FRIK directories: {e}")
             
             # Always download and install new FRIK
-            self.root.after(0, lambda: self.message_label.config(text="Installing latest FRIK version...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+            self.root.after(0, lambda: self.message_label.config(text="Installing latest FRIK version.", fg="#ffffff") if self.message_label.winfo_exists() else None)
             try:
                 self.download_and_install_frik()
                 logging.info("New FRIK version installed successfully")
@@ -1854,7 +1854,7 @@ class FalloutLondonVRInstaller:
             if os.path.exists(high_fps_path):
                 while True:  # Retry loop
                     try:
-                        self.root.after(0, lambda: self.message_label.config(text="Removing deprecated High FPS Physics Fix...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+                        self.root.after(0, lambda: self.message_label.config(text="Removing deprecated High FPS Physics Fix.", fg="#ffffff") if self.message_label.winfo_exists() else None)
                         logging.info(f"Found High FPS Physics Fix at {high_fps_path}, removing...")
                         shutil.rmtree(high_fps_path)
                         logging.info("High FPS Physics Fix removed successfully")
@@ -1877,7 +1877,7 @@ class FalloutLondonVRInstaller:
             if os.path.exists(xdi_mod_path):
                 while True:  # Retry loop
                     try:
-                        self.root.after(0, lambda: self.message_label.config(text="Removing deprecated XDI mod...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+                        self.root.after(0, lambda: self.message_label.config(text="Removing deprecated XDI mod.", fg="#ffffff") if self.message_label.winfo_exists() else None)
                         logging.info(f"Found XDI mod directory at {xdi_mod_path}, removing...")
                         shutil.rmtree(xdi_mod_path)
                         logging.info("XDI mod directory removed successfully")
@@ -1900,7 +1900,7 @@ class FalloutLondonVRInstaller:
             if os.path.exists(ppr_mod_path):
                 while True:  # Retry loop
                     try:
-                        self.root.after(0, lambda: self.message_label.config(text="Removing deprecated PrivateProfileRedirector...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+                        self.root.after(0, lambda: self.message_label.config(text="Removing deprecated PrivateProfileRedirector.", fg="#ffffff") if self.message_label.winfo_exists() else None)
                         logging.info(f"Found PrivateProfileRedirector F4 at {ppr_mod_path}, removing...")
                         shutil.rmtree(ppr_mod_path)
                         logging.info("PrivateProfileRedirector F4 removed successfully")
@@ -1924,7 +1924,7 @@ class FalloutLondonVRInstaller:
                 if os.path.exists(version_check_patcher_path):
                     while True:  # Retry loop
                         try:
-                            self.root.after(0, lambda: self.message_label.config(text="Removing deprecated Version Check Patcher...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+                            self.root.after(0, lambda: self.message_label.config(text="Removing deprecated Version Check Patcher.", fg="#ffffff") if self.message_label.winfo_exists() else None)
                             logging.info(f"Found Version Check Patcher at {version_check_patcher_path}, removing...")
                             shutil.rmtree(version_check_patcher_path)
                             logging.info("Version Check Patcher removed successfully")
@@ -1947,7 +1947,7 @@ class FalloutLondonVRInstaller:
             if os.path.exists(fallout_london_vr_mod_path):
                 while True:  # Retry loop
                     try:
-                        self.root.after(0, lambda: self.message_label.config(text="Removing old Fallout London VR mod...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+                        self.root.after(0, lambda: self.message_label.config(text="Removing old Fallout London VR mod.", fg="#ffffff") if self.message_label.winfo_exists() else None)
                         logging.info(f"Found Fallout London VR mod at {fallout_london_vr_mod_path}, removing before update...")
                         shutil.rmtree(fallout_london_vr_mod_path)
                         logging.info("Fallout London VR mod folder removed successfully")
@@ -1966,7 +1966,7 @@ class FalloutLondonVRInstaller:
                         return  # Fatal error, can't continue without removing old folder
             
             # Step 2: Copy MO2 assets (update mods)
-            self.root.after(0, lambda: self.message_label.config(text="Copying updated mod files...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+            self.root.after(0, lambda: self.message_label.config(text="Copying updated mod files.", fg="#ffffff") if self.message_label.winfo_exists() else None)
             while True:  # Retry loop for copying assets
                 try:
                     # Exclude ModOrganizer.ini and modlist.txt - these need special handling
@@ -1987,7 +1987,7 @@ class FalloutLondonVRInstaller:
                     return
             
             # Step 2.1: Merge modlist.txt (add any new mods while preserving user's order)
-            self.root.after(0, lambda: self.message_label.config(text="Updating mod list...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+            self.root.after(0, lambda: self.message_label.config(text="Updating mod list.", fg="#ffffff") if self.message_label.winfo_exists() else None)
             try:
                 # Extract source modlist.txt from MO2.7z to temp location for merge
                 mo2_assets_archive = os.path.join(getattr(sys, '_MEIPASS', os.path.dirname(__file__)), "assets", "MO2.7z")
@@ -2037,7 +2037,7 @@ class FalloutLondonVRInstaller:
                     logging.info("London 1.03 upgrade completed successfully")
                 except Exception as e:
                     logging.error(f"Failed to upgrade to London 1.03: {e}")
-                    self.root.after(0, lambda es=str(e): messagebox.showwarning("Warning", f"Failed to upgrade to London 1.03: {es}\n\nContinuing with update..."))
+                    self.root.after(0, lambda es=str(e): messagebox.showwarning("Warning", f"Failed to upgrade to London 1.03: {es}\n\nContinuing with update."))
                     # Non-fatal, continue with update
             
             # Step 3: Update fallout4custom.ini with VRUI settings
@@ -2070,7 +2070,7 @@ class FalloutLondonVRInstaller:
                 # Non-fatal, continue with update
             
             # Step 4: Update FRIK weapon offsets
-            self.root.after(0, lambda: self.message_label.config(text="Updating FRIK weapon offsets...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+            self.root.after(0, lambda: self.message_label.config(text="Updating FRIK weapon offsets.", fg="#ffffff") if self.message_label.winfo_exists() else None)
             try:
                 self.copy_weapon_offsets()
                 logging.info("FRIK weapon offsets updated successfully")
@@ -3422,11 +3422,11 @@ class FalloutLondonVRInstaller:
             
             # Clear status labels
             if hasattr(self, 'f4vr_status_label') and self.f4vr_status_label.winfo_exists():
-                self.f4vr_status_label.config(text="Fallout 4 VR: Detecting...", fg="#ffffff")
+                self.f4vr_status_label.config(text="Fallout 4 VR: Detecting.", fg="#ffffff")
             if hasattr(self, 'london_status_label') and self.london_status_label.winfo_exists():
-                self.london_status_label.config(text="Fallout: London: Detecting...", fg="#ffffff")
+                self.london_status_label.config(text="Fallout: London: Detecting.", fg="#ffffff")
             if hasattr(self, 'dlc_status_label') and self.dlc_status_label.winfo_exists():
-                self.dlc_status_label.config(text="DLC: Detecting...", fg="#ffffff")
+                self.dlc_status_label.config(text="DLC: Detecting.", fg="#ffffff")
             
             # Run the original robust detection in background thread
             # skip_update_detection is already set to True, so detect_paths will skip update check
@@ -4322,7 +4322,7 @@ class FalloutLondonVRInstaller:
         tk.Label(content_frame, text="Installing Fallout: London VR", font=self.title_font,
                 bg=bg_color if not self.bg_image else '#1e1e1e', fg=fg_color).pack(pady=self.get_scaled_value(5))
         
-        self.message_label = tk.Label(content_frame, text="Preparing installation...", font=self.regular_font,
+        self.message_label = tk.Label(content_frame, text="Preparing installation.", font=self.regular_font,
                                       bg=bg_color if not self.bg_image else '#1e1e1e', fg=fg_color,
                                       wraplength=460, justify="center")
         self.message_label.pack(pady=self.get_scaled_value(2))
@@ -6075,7 +6075,7 @@ class FalloutLondonVRInstaller:
         Creates backups of existing files before overwriting.
         """
         try:
-            self.root.after(0, lambda: self.message_label.config(text="Installing xSE Plugin Preloader...", fg="#ffffff") if self.message_label.winfo_exists() else None)
+            self.root.after(0, lambda: self.message_label.config(text="Installing xSE Plugin Preloader.", fg="#ffffff") if self.message_label.winfo_exists() else None)
             logging.info("Starting xSE Plugin Preloader installation")
             
             # Get F4VR installation path
@@ -6505,7 +6505,7 @@ fso.DeleteFile WScript.ScriptFullName
             try:
                 if attempt > 1:
                     self.root.after(0, lambda a=attempt, lt=label_text: self.progress_label.config(
-                        text=f"Retrying {lt} download (attempt {a}/{max_retries})..."))
+                        text=f"Retrying {lt} download (attempt {a}/{max_retries})."))
                     self.root.after(0, lambda: self.message_label.config(
                         text="Trying to reconnect. Please check your internet connection.", fg="#ffaa00") if self.message_label.winfo_exists() else None)
                     time.sleep(retry_delay)
@@ -6554,7 +6554,7 @@ fso.DeleteFile WScript.ScriptFullName
                 
                 if attempt < max_retries:
                     self.root.after(0, lambda a=attempt, d=retry_delay, lt=label_text: self.progress_label.config(
-                        text=f"Connection failed. Retrying {lt} in {d}s (attempt {a}/{max_retries})..."))
+                        text=f"Connection failed. Retrying {lt} in {d}s (attempt {a}/{max_retries})."))
                     self.root.after(0, lambda: self.message_label.config(
                         text="Connection error. Please check your internet connection.", fg="#ffaa00") if self.message_label.winfo_exists() else None)
                 else:

@@ -44,8 +44,7 @@ When updating an existing installation:
 6. **Merge Mod List** - Adds new mods while preserving your custom mod order
 7. **Upgrade to London 1.03** (optional) - If 1.03 files are detected
 8. **Update INI Settings** - Applies latest recommended VR UI settings
-9. **Install CAS Enabler** - Controller vibration support
-10. **Install xSE Plugin Preloader** - Ensures latest version
+9. **Install xSE Plugin Preloader** - Ensures latest version
 
 ## Requirements
 
